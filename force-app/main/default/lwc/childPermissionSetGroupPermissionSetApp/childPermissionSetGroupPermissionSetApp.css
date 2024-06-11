@@ -1,0 +1,23 @@
+.dummy{
+	color : blue;
+}
+lightning-card{   
+   --slds-c-card-shadow: 0 3px 3px 0 rgba(2, 2, 2, 0.229);   
+
+}
+
+lightning-card[data-id='card1']{
+   font-weight: bold !important;
+ }
+
+ .card-header {
+   display: flex;
+   align-items: center;
+   padding: 5px;
+}
+
+.card-header .bold-title {
+   font-weight: bold;
+   font-size: 1rem; 
+   margin-left: 10px;
+}

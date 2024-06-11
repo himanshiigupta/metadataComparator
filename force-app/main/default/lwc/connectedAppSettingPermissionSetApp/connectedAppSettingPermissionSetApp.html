@@ -1,0 +1,189 @@
+<template>
+    <template if:true={showConnectedAppSettings}>
+        <lightning-layout>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Assigned Connected Apps" style="margin-top:-16px;">
+                            <div style="overflow-y: auto;
+                            height: 100px">
+                            <template if:true={connectedAppSettings1}>
+                                <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    
+                                    <template for:each={connectedAppSettings1} for:item="conApp">
+                                        
+                                            <li key={conApp.Id} style="font-size:16px; list-style-type: disc;">{conApp.Name}</li>
+                                        
+                                    </template>
+                                </ul>
+                            </template>
+                            <template if:true={nodata}>
+                                <p style="font-style: oblique;
+                                color: crimson;
+                                font-size: x-large;
+                                margin-left: 224px;
+                                margin-top: 28px;">
+                                No Data Available
+                                </p>
+                            </template>
+                        </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+            <template if:false={isDifferentOrg}>
+                <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                    <lightning-card>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section label="Assigned Connected Apps" style="margin-top:-16px;">
+                                <div style="overflow-y: auto;
+                            height: 100px">
+                                <template if:true={connectedAppSettings2}>
+                                    <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                        
+                                    <template for:each={connectedAppSettings2} for:item="conApp">
+                                            <li key={conApp.Id} style="font-size:16px; list-style-type: disc;">{conApp.Name}</li>
+                                        
+                                    </template>
+                                </ul>
+                                </template>
+                                <template if:true={nodata1}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                    No Data Available
+                                    </p>
+                                </template>
+                                </div>
+
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-card>
+                </lightning-layout-item>
+            </template>
+            <template if:true={isDifferentOrg}>
+                <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                    <lightning-card>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section label="Assigned Connected Apps" style="margin-top:-16px;">
+                                <div style="overflow-y: auto;
+                            height: 100px">
+                                <template if:true={connectedAppSettings2}>
+                                    <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={connectedAppSettings2} for:item="conApp">
+                                        
+                                            <li key={conApp} style="font-size:16px; list-style-type: disc;">{conApp}</li>
+                                        
+                                    </template>
+                                </ul>
+                                </template>
+                                <template if:true={nodata1}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                    No Data Available
+                                    </p>
+                                </template>
+                                </div>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-card>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </template>
+    <template if:true={showConnectedAppSettingsForUsers}>
+        <div class="slds-var-p-horizontal_xx-small">
+            <lightning-card>
+                <lightning-accordion allow-multiple-sections-open style="font-size:18px; height:40px; margin-top:-16px;" onsectiontoggle={onSectionToggle}>
+                    <lightning-accordion-section label="Assigned Connected Apps">
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </lightning-card>
+        </div>
+        <template if:true={showConnectedAppCardsForUsers}>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">  
+                    <lightning-card>
+                        <div style="overflow-y: auto;
+                            height: 100px">
+                        <template if:true={connectedAppSettingsUser1}>
+                            <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                            <template for:each={connectedAppSettingsUser1} for:item="conApp">
+                            
+                                    <li key={conApp.Id} style="font-size:16px; list-style-type: disc;">{conApp.Name}</li> 
+                                
+                            </template>
+                        </ul>
+                    </template>
+                    <template if:true={noDataUser}>
+                        <p style="font-style: oblique;
+                        color: crimson;
+                        font-size: x-large;
+                        margin-left: 224px;
+                        margin-top: 28px;">
+                        No Data Available
+                        </p>
+                    </template>
+                    </div>
+                    </lightning-card>
+                </lightning-layout-item>
+                <template if:false={isDifferentOrg}>
+                    <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                        <lightning-card>
+                            <div style="overflow-y: auto;
+                            height: 100px">
+                            <template if:true={connectedAppSettingsUser2}>
+                                <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                <template for:each={connectedAppSettingsUser2} for:item="conApp">
+                                    
+                                        <li key={conApp.Id} style="font-size:16px; list-style-type: disc;">{conApp.Name}</li> 
+                                    
+                                </template>
+                            </ul>
+                        </template>
+                        <template if:true={noDataUser1}>
+                            <p style="font-style: oblique;
+                            color: crimson;
+                            font-size: x-large;
+                            margin-left: 224px;
+                            margin-top: 28px;">
+                            No Data Available</p>
+                        </template>
+                        </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+                <template if:true={isDifferentOrg}>
+                    <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                        <lightning-card>
+                            <div style="overflow-y: auto;
+                            height: 100px">
+                            <template if:true={connectedAppSettingsUser2}>
+                                <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                <template for:each={connectedAppSettingsUser2} for:item="conApp">
+                                    
+                                        <li key={conApp.idd} style="font-size:16px; list-style-type: disc;">{conApp.Name}</li> 
+                                    
+                                </template>
+                            </ul>
+                            </template>
+                        <template if:true={noDataUser1}>
+                            <p style="font-style: oblique;
+                            color: crimson;
+                            font-size: x-large;
+                            margin-left: 224px;
+                            margin-top: 28px;">No Data Available</p>
+                        </template>
+                        </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </template>
+    </template>
+</template>

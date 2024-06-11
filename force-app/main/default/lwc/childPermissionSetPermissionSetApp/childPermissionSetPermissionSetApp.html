@@ -1,0 +1,39 @@
+<template>
+   
+    <template if:true={showUserPermissionSetDetails}>
+        <lightning-card>
+            <lightning-layout>
+                <lightning-layout-item size="5" style="margin-left:120px;">
+                    <h1 style="font-weight:bold; text-align:center;">{user1Name}</h1>
+                    <template lwc:if={user1PermissionDetails}>
+                        
+                        
+                        <template for:each={user1PermissionDetails} for:item="user">
+                            <ul key={user.permissionSetUrl} style="padding-left:20px;">
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>PermissionSet</b> : <a href={user.permissionSetUrl} >{user.recordData}</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </template>
+                    </template>
+                </lightning-layout-item> 
+                <lightning-layout-item size="5" style="margin-left:20px;">
+                    <h1 style="font-weight:bold; text-align:center;">{user2Name}</h1>
+                    <template lwc:if={user2PermissionDetails}>
+                        <template for:each={user2PermissionDetails} for:item="user">
+                            <ul key={user.Id} style="padding-left:20px;">
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>PermissionSet</b> : <a href={user.permissionSetUrl} >{user.recordData}</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </template>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </template>
+</template>

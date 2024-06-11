@@ -1,0 +1,14 @@
+li{
+    padding-top : 5px;
+    padding-bottom : 5px;
+  }
+lightning-card{   
+   --slds-c-card-shadow: 0 3px 3px 0 rgba(6, 6, 6, 0.229);   
+  font-size: 14px;
+}
+:host {
+  --slds-c-card-heading-font-weight: 600px;
+}
+lightning-card[data-id='card']{
+  font-weight: bold;
+}

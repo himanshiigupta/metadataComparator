@@ -1,0 +1,53 @@
+input[type="radio"] {
+    display: inline;
+    margin-right: 10px;
+  }
+
+lightning-button.button {
+  
+	--sds-c-button-brand-color-background: #4e8faf;  
+  --sds-c-button-text-color: #f4f7f9;
+}
+.custom-radio-group {
+    
+    color: #4e8faf; 
+}
+.fixed-card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  position: sticky;
+  z-index: 999;
+}
+
+.content-below-fixed-card {
+  padding-top: 5px;
+}
+.main-div{
+  display: flex;
+    height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    position: relative;
+    top: 9px;
+    left: 2%;
+}
+.logo{
+  mix-blend-mode: multiply;
+}
+.header{
+  font-size: 35px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+.header-div{
+    position: relative;
+    left: 87px;
+}
+.radio-button{
+}
+.header-left{
+  width:55px;
+}

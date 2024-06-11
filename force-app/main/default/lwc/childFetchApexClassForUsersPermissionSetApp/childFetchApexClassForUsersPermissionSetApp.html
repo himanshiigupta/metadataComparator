@@ -1,0 +1,32 @@
+<template>
+    <template if:true={ShowApexClassForUser}>
+        <lightning-layout>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Assigned Apex Classes">
+                            <template for:each={apexClassSettingforUser1} for:item="apexClass">
+                                <ul key={apexClass.Id} style="font-weight:bold; font-size:16px;" class="slds-var-p-left_medium">
+                                    <li>{apexClass.Name}</li>
+                                </ul>
+                            </template>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Assigned Apex Classes">
+                            <template for:each={apexClassSettingforUser2} for:item="apexClass">
+                                <ul key={apexClass.Id} style="font-weight:bold; font-size:16px;" class="slds-var-p-left_medium">
+                                    <li>{apexClass.Name}</li>
+                                </ul>
+                            </template>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+</template>

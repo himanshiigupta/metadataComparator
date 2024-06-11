@@ -1,0 +1,193 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:true={showSystemPermissions}>
+        <lightning-layout>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="System Permissions" style="margin-top:-16px;">
+                            <div style="overflow-y: auto; height: 300px">
+                            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+                                <tr>
+                                    <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                        <div title="Key">System Permissions</div>
+                                    </th>
+                                    <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                        <div title="Value">Enabled</div>
+                                    </th>
+                                </tr>
+                            
+                                <template for:each={systemPermission1} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                            <template if:true={permission.value}>
+                                                <input name="" type="checkbox" disabled checked value={permission.value}/>
+                                            </template>
+                                            <template if:false={permission.value}>
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            </template>
+                                            
+                                            
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table> 
+                        </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="System Permissions" style="margin-top:-16px;">
+                            <div style="overflow-y: auto; height: 300px">
+                            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+                                <tr>
+                                    <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                        <div title="Key">System Permissions</div>
+                                    </th>
+                                    <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                        <div title="Value">Enabled</div>
+                                    </th>
+                                </tr>
+                            
+                                <template for:each={systemPermission2} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                            <template if:true={permission.value}>
+                                                <input name="" type="checkbox" disabled checked value={permission.value}/>
+                                            </template>
+                                            <template if:false={permission.value}>
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+                        </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    
+    <template if:true={showSystemPermissionsforUsers}>
+        <div class="slds-var-p-around_xx-small">
+            <lightning-card>
+                <lightning-accordion allow-multiple-sections-open style="font-size:18px; height:40px; margin-top:-16px;" onsectiontoggle={onSectionToggle}>
+                    <lightning-accordion-section label="System Permissions">
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </lightning-card>
+        </div>
+        <template if:true={showSystemPermissionsCards}>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                    <lightning-card>
+                        <div style="overflow-y: auto; height: 300px">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+                            <tr>
+                                <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                    <div title="Key">System Permissions</div>
+                                </th>
+                                <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                    <div title="Value">Enabled</div>
+                                </th>
+                            </tr>
+                            <template if:true={isData2}>
+                        
+                                <template for:each={systemPermissionForUser1} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                            <template if:true={permission.value}>
+                                                <input name="" type="checkbox" disabled checked value={permission.value}/>
+                                            </template>
+                                            <template if:false={permission.value}>
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                             </template>
+                             <template if:false={isData2}>
+                                <template for:each={systemPermissionForUser2} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                            
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            
+                                        </td>
+                                    </tr>
+                                </template>
+                             </template>
+                        </table>
+                    </div>
+                    </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                    <lightning-card>
+                        <div style="overflow-y: auto; height: 300px">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+                            <tr>
+                                <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                    <div title="Key">System Permissions</div>
+                                </th>
+                                <th style="background-color: #f2f2f2; border: 1px solid #ccc; padding: 8px; text-align: left;">
+                                    <div title="Value">Enabled</div>
+                                </th>
+                            </tr>
+                            <template if:true={isData}>
+                                <template for:each={systemPermissionForUser2} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                            <template if:true={permission.value}>
+                                                <input name="" type="checkbox" disabled checked value={permission.value}/>
+                                            </template>
+                                            <template if:false={permission.value}>
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            </template>
+                                        </td>
+                                        
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={isData}>
+                                <template for:each={systemPermissionForUser1} for:item="permission">
+                                    <tr key={permission.key}>
+                                        <td class="slds-var-p-left_medium" style="border: 1px solid #ccc; padding: 8px;">
+                                            <div>{permission.key}</div>
+                                        </td>
+                                        <td style="border: 1px solid #ccc; padding: 8px;">
+                                           
+                                                <input name="" type="checkbox" disabled value={permission.value}/>
+                                            
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </table>
+                    </div>
+                    </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+        
+    </template>
+</template>

@@ -1,0 +1,170 @@
+<template>
+    <div class="fixed-card-container">
+        <lightning-card data-id="header">
+            <div class="main-div">
+                <div class="slds-var-m-left_small header-left" >
+                    <img src={Logo} alt="Logo Not Found" width="100px" height="100px" class="logo"/>
+                </div>
+                <div class="header-div">
+                    <h2 class="header" style="font-size: 35px;">Metadata Comparator</h2>
+                </div>
+                <div>
+                    <!--MODAL BEGIN-->
+                    <lightning-button style="margin-right: 22px;" variant="brand" label="Help" title="Open Modal" onclick={showModal}></lightning-button>
+                    <template if:true={isOpen}>                         
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                
+                                <!--Header part of the Modal-->
+                                <header class="slds-modal__header">
+                                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModal}>
+                                        <lightning-icon icon-name="utility:close"
+                                        alternative-text="close"
+                                        variant="inverse"
+                                        size="small" ></lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal Header</h2>
+                                </header>
+                                <!--Header part of the Modal Ends-->
+                                
+                                <!--Body part of the Modal-->
+                                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                                    Welcome to the App!</br>
+                                    This is the Help Section.</br>
+                                    You can use this section to Learn how to use this App :</br>
+                                    
+                                    
+                                    <li>{label.Delete}</li>
+                                    
+                                    <!--
+                                        <ul>
+                                            <li>{label.Delete}</li>                                    
+                                        </ul>
+                                    -->
+                                </div>
+                                <!--Body part of the Modal ends-->
+                                
+                                <!--Footer part of the Modal-->
+                                <footer class="slds-modal__footer">
+                                    <button class="slds-button slds-button_brand" onclick={save} title="OK">OK</button>
+                                </footer>
+                                <!--Footer part of the Modal-->
+                            </div>
+                        </section>
+                        
+                        <!-- This is the dark background that you can see behind the popup-->
+                        <div class="slds-backdrop slds-backdrop_open">
+                        </div>
+                    </template>
+                    <lightning-button  style="margin-right:20px;" variant="brand" label="Switch to Lightning" onclick={handleSwitchToLight} class="button"></lightning-button>
+                    
+                </div>
+            </div>
+        </lightning-card>
+        <lightning-card >
+            <div style="display:flex;">
+                <div class ="radio-button slds-align_absolute-center">
+                    <lightning-radio-group 
+                    name="radioGroup"
+                    label=""
+                    options={options}
+                    value={value}
+                    type="button"
+                    onchange={handleRadioChange}>
+                </lightning-radio-group>
+            </div>
+            <div>
+                <template if:true={showCloseButton}>
+                    <lightning-button-icon style="POSITION: relative; RIGHT: 20PX;" icon-name="utility:close" variant="brand" alternative-text="close" title="Close" disabled={disableCloseButton} onclick={handleCloseClick}></lightning-button-icon>
+                </template>  
+                <!---->     
+            </div>
+        </div>
+        <template if:true={comboboxDisabled}>
+            <div style="display: flex;
+            flex-wrap: nowrap;
+            align-content: center;
+            align-items: flex-end;
+            justify-content: space-around;position: relative;
+            top: 7px;
+            padding-top:10px;" >
+            <div>
+                <template if:true={showNamedCredentialDropdown}>
+                    <lightning-combobox style="width: 15rem; " name="NamedCredentialSelection" value={value} options={NamedCredentialDropdown} onchange={handleNamedCredentialChange} placeholder="Select an Org"></lightning-combobox>
+                </template>
+            </div>
+            <div>
+                
+                <lightning-combobox style="width: 15rem;" name="optionSelection" disabled={userselectionDesable} value={value} options={dropdownOptions} onchange={handleDropdownChange}></lightning-combobox>
+                
+            </div>
+            <div style="display: flex; gap: 115px;">
+                
+                
+                
+                <lightning-combobox style="width:15rem; " disabled={disableUser1} placeholder={dropdownLabel1} data-id="listOfNames1" value={value} options={NamesDropdown} onchange={handleUser1Change}></lightning-combobox>
+                
+                
+                <lightning-combobox style="width:15rem; " disabled={disableUser2} placeholder={dropdownLabel2} data-id="listOfNames2" value={value} options={NamesDropdown2} onchange={handleUser2Change}></lightning-combobox>
+                
+                
+            </div>
+            
+            
+            <div>
+                <lightning-button variant="brand" disabled={compareButtonDisabled} label="Compare" onclick={handleCompare}></lightning-button>
+            </div>
+        </div>
+    </template>
+    
+    
+    
+    
+    
+    <!-- MODAL END -->
+    
+    
+    <!-- <template if:true={showCloseButton}>
+        <div style="padding-top:25px; padding-left:100px;">
+            <lightning-button-icon icon-name="utility:close" alternative-text="close" title="Close" onclick={handleCloseNamedCredential}></lightning-button-icon>
+        </div>
+    </template>
+    <template if:true={showNamesDropdown}>
+        <div style="padding-top:25px; padding-left:100px;">
+            <lightning-button-icon icon-name="utility:close" alternative-text="close" title="Close" onclick={handleCloseClick}></lightning-button-icon>
+        </div>
+    </template>   -->
+    
+    
+    
+    
+</lightning-card>
+</div>
+<div class="content-below-fixed-card">
+    <c-child-user-details-permission-set-app named-credential={credName} show-user-details={showUserDetails} user1-details={user1Details} user2-details={user2Details} user1-name={user1} user2-name={user2}></c-child-user-details-permission-set-app>
+    
+    <c-child-permission-set-group-permission-set-app show-user-permission-set-groups={showUserPermissionSetGroups} user1-name={user1} user2-name={user2} user1-permission-set-group-map={user1PermissionSetGroupMap} user2-permission-set-group-map={user2PermissionSetGroupMap} user1-permission-sets-without-group={user1PermissionSetsWithoutGroup} user2-permission-sets-without-group={user2PermissionSetsWithoutGroup} ></c-child-permission-set-group-permission-set-app>
+    
+    <div style="width: 250px; margin-left: 605px; margin-top: -22px;">
+        <template if:true={showExpColAll}>
+            <div style="display:flex; align-items: center; margin-left: 23px;">
+                <lightning-button label="Expand all" variant="brand-outline" name="Expand" onclick={handleAll} style="border-radius:5px;"></lightning-button>
+                <lightning-button label="Collapse all" variant="brand-outline" name="Collapse" style="border-radius:5px;" onclick={handleAll} class="slds-var-m-left_x-small"></lightning-button>
+            </div>
+        </template>
+    </div>
+    <c-apex-class-settings-permission-set-app org-selection={var1} named-credential={credName}></c-apex-class-settings-permission-set-app>
+    
+    <c-object-setting-permission-set-app org-selection={var1} named-credential={credName}></c-object-setting-permission-set-app>
+    
+    <c-connected-app-setting-permission-set-app org-selection={var1} named-credential={credName}></c-connected-app-setting-permission-set-app>
+    
+    <c-vf-page-settings-permission-set-app org-selection={var1} named-credential={credName}></c-vf-page-settings-permission-set-app>
+    
+    <c-assigned-apps-permission-set-app org-selection={var1} named-credential={credName}></c-assigned-apps-permission-set-app>
+    
+    <c-system-permission-permission-set-app org-selection={var1} named-credential={credName}></c-system-permission-permission-set-app>
+    
+</div>
+</template>

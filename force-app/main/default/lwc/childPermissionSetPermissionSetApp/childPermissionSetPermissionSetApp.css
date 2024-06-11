@@ -1,0 +1,9 @@
+li{
+    padding : 5px;
+}
+
+lightning-card{
+    --slds-c-card-color-background: #c1e6f85b;
+   --slds-c-card-shadow: 0 5px 5px 0 rgba(37, 7, 3, 0.229);  
+
+}

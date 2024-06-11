@@ -1,0 +1,193 @@
+<template>
+    <template if:true={showAssignedApps}>
+        <lightning-layout>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Assigned Apps" style="margin-top:-16px;">
+                            <div style="overflow-y: auto;
+                            height: 100px">
+                                <template if:true={assignedApps1}>
+
+                                
+                                    <ul style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={assignedApps1} for:item="app">    
+                                            <li key={app.Id} style="font-size:16px; list-style-type: disc;">{app.Label}</li>     
+                                    </template>
+                                    </ul>
+                                </template>
+                                <template if:true={noData}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                        No Data Available
+                                    </p>
+                                </template>
+                            </div>
+
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+            <template if:true={isDifferentOrg}>
+                <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                    <lightning-card>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section label="Assigned Apps" style="margin-top:-16px;">
+                                <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={assignedApps2}>
+                                    <ul style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={assignedApps2} for:item="app">
+                                        
+                                            <li key={app} style="font-size:16px; list-style-type: disc;">{app}</li> 
+                                        
+                                    </template>
+                                </ul>
+                                </template>
+                                <template if:true={noData2}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                        No Data Available
+                                    </p>
+                                </template>
+                                </div>
+
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-card>
+                </lightning-layout-item>
+            </template>
+            <template if:false={isDifferentOrg}>
+                <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small slds-var-p-top_xxx-small">
+                    <lightning-card>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section label="Assigned Apps" style="margin-top:-16px;">
+                                <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={assignedApps2}>
+
+                                        <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                        <template for:each={assignedApps2} for:item="app">
+                                            
+                                                <li key={app.Id} style="font-size:16px; list-style-type: disc;">{app.Label}</li> 
+                                            
+                                        </template>
+                                    </ul>
+                                </template>
+                                <template if:true={noData2}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                        No Data Available
+                                    </p>
+                                </template>
+                                </div>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </lightning-card>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </template>
+    <template if:true={showAssignedAppsForUser}>
+        <div class="slds-var-p-horizontal_xx-small">
+            <lightning-card>
+                <lightning-accordion allow-multiple-sections-open style="font-size:18px; height:40px; margin-top:-16px;" onsectiontoggle={onSectionToggle}>
+                    <lightning-accordion-section label="Assigned Apps">
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </lightning-card>
+        </div>
+        <template if:true={showAssignedAppsCardsForUsers}>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">  
+                    <lightning-card>
+                        <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={assignedAppsUser1}>
+                                <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                <template for:each={assignedAppsUser1} for:item="app">
+                                    
+                                        <li key={app.Id} style="font-size:16px; list-style-type: disc;">{app.Label}</li> 
+                                    
+                                </template>
+                            </ul>
+                        </template>
+                        <template if:true={noDataUser}>
+                            <p style="font-style: oblique;
+                            color: crimson;
+                            font-size: x-large;
+                            margin-left: 224px;
+                            margin-top: 28px;">
+                                No Data Available
+                            </p>
+                        </template>
+                        </div>
+                    </lightning-card>
+                </lightning-layout-item>
+                <template if:false={isDifferentOrg}>
+                    <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                        <lightning-card>
+                            <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={assignedAppsUser2}>
+                                    <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={assignedAppsUser2} for:item="app">
+                                        
+                                            <li key={app.Id} style="font-size:16px; list-style-type: disc;">{app.Label}</li> 
+                                        
+                                    </template>
+                                    </ul>  
+                                </template>
+                                <template if:true={noDataUser2}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                        No Data Available
+                                    </p>
+                                </template>
+                                </div> 
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+                <template if:true={isDifferentOrg}>
+                    <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                        <lightning-card>
+                            <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={assignedAppsUser2}>
+                                    <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={assignedAppsUser2} for:item="app">
+                                        
+                                            <li key={app.idd} style="font-size:16px; list-style-type: disc;">{app.Name}</li> 
+                                        
+                                    </template>   
+                                </ul>
+                            </template>
+                            <template if:true={noDataUser2}>
+                                <p style="font-style: oblique;
+                                color: crimson;
+                                font-size: x-large;
+                                margin-left: 224px;
+                                margin-top: 28px;">
+                                    No Data Available
+                                </p>
+                            </template>
+                            </div> 
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </template>
+    </template>
+</template>

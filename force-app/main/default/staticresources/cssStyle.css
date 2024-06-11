@@ -1,0 +1,13 @@
+lightning-card[data-id='header']>article>div.slds-card__header{
+       display:none !important;
+}
+lightning-combobox >div>label{
+       display:none !important;
+}
+.slds-card__body{
+       position: relative;
+       top: -10px;
+       margin-bottom: 0px !important;
+       padding-bottom: 5px;
+}
+

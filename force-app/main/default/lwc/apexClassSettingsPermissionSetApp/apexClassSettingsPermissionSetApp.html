@@ -1,0 +1,131 @@
+<template>
+    <template if:true={showApexClassSettings}>
+        <lightning-layout>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small" style="padding-top:20px;">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Apex Classes" style="margin-top:-16px;">
+                            
+                            <div style="overflow-y: auto;
+                            height: 100px">
+                                <template if:true={apexClasses1}>
+                                
+                            <ul  style="font-size:16px; padding-left: 40px " class="slds-var-p-left_medium">
+                            <template for:each={apexClasses1} for:item="apexclass">
+                                
+                                    <li key={apexclass.Id} style="font-size:16px; list-style-type: disc;">{apexclass.Name}</li>
+                                
+                            </template>
+                        </ul>
+                        </template>
+                        <template if:true={nodata}>
+                            <p style="font-style: oblique;
+                            color: crimson;
+                            font-size: x-large;
+                            margin-left: 224px;
+                            margin-top: 28px;">
+                                No Data Available
+                            </p>
+                        </template>
+                        </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="slds-var-p-horizontal_xx-small" style="padding-top:20px;">
+                <lightning-card>
+                    <lightning-accordion allow-multiple-sections-open>
+                        <lightning-accordion-section label="Apex Classes" style="margin-top:-16px;">
+                            <div style="overflow-y: auto;
+                                height: 100px">
+                                <template if:true={apexClasses2}>
+                                    <ul style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                        <template for:each={apexClasses2} for:item="apexclass">
+                                            
+                                                <li key={apexclass.id} style="font-size:16px; list-style-type: disc;">{apexclass.Name}</li>
+                                            
+                                        </template>
+                                    </ul> 
+                                </template>
+                                <template if:true={noData1}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                    No Data Available
+                                    </p>
+                                </template>
+                            </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    
+    <template if:true={showApexClassSettingsForUsers}>
+        <div class="slds-var-p-around_xx-small">
+            <lightning-card>
+                <lightning-accordion allow-multiple-sections-open style="font-size:18px; height:40px; margin-top:-16px;" onsectiontoggle={onSectionToggle}>
+                    <lightning-accordion-section label="Apex Classes" style="padding-top:0px;" >
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </lightning-card>
+        </div>
+        <template if:true={showApexClassCardsForUsers}>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">  
+                    <lightning-card>
+                        <div style="overflow-y: auto;
+                             height: 100px">
+                            <template if:true={apexClassesForUser1}>
+                                <ul  style="font-size:16px; padding-left: 40px" class="slds-var-p-left_medium">
+                                    <template for:each={apexClassesForUser1} for:item="apexclass">
+                                        
+                                            <li key={apexclass.Id} style="font-size:16px; list-style-type: disc;">{apexclass.Name}</li> 
+                                        
+                                    </template>
+                                </ul>
+                            </template>
+                            <template if:true={noDataUser}>
+                                    <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                    No Data Available
+                                    </p>
+                            </template>
+                        </div>
+                    </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                    <lightning-card>
+                        <div style="overflow-y: auto;
+                        height: 100px">
+                                <template if:true={apexClassesForUser2}>
+                                <ul style="font-size:16px; padding-left: 40px;" class="slds-var-p-left_medium">
+                                <template for:each={apexClassesForUser2} for:item="apexclass">
+                                    
+                                        <li key={apexclass.Id} style="font-size:16px; list-style-type: disc;">{apexclass.Name}</li> 
+                                    
+                                </template>
+                            </ul>
+                        </template>
+                            <template if:true={noDataUser1}>
+                                <p style="font-style: oblique;
+                                color: crimson;
+                                font-size: x-large;
+                                margin-left: 224px;
+                                margin-top: 28px;">
+                                No Data Available
+                                </p>
+                            </template>
+                        </div>
+                    </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>       
+    </template>
+</template>

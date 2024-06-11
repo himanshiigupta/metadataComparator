@@ -1,0 +1,77 @@
+<template>
+    <template if:true={showUserDetails}>        
+        <!-- <h1 style="font-weight: bold; text-align: center; text-decoration: underline; color: #ffffff; margin: 10px"><b>USER DETAILS</b></h1> -->
+        <div style="padding-left: 5px; padding-right: 5px;">
+            <lightning-card data-id="card" title="USER DETAILS" icon-name="utility:user" padding="around-small"></lightning-card> 
+        </div>     
+        <lightning-layout>            
+            <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                <lightning-card>
+                    <div style="height: 150px">
+                        <h1 style="font-weight:bold; text-align:center; text-decoration: underline; margin-bottom: 10px; font-size:larger">{user1Name}</h1>
+                        <template lwc:if={user1Details}>
+                            <ul style="padding-left:20px;">
+                                <div style="display:flex;">
+                                    <div style="padding-left:20px;">
+                                        <li><b>Role</b> : {user1Details.UserRoleName}</li>
+                                        <li><b>Profile</b> : {user1Details.ProfileName}</li>
+                                        <li><b>Locale</b> : {user1Details.LocaleSidKey}</li>
+                                    </div>
+                                    <div style="padding-left:180px;">
+                                        <li><b>User License</b> : {user1Details.ProfileUserLicenseName}</li>
+                                        <li><b>Isactive</b> : {user1Details.isActive}</li>
+                                        <li><b>Last Login date</b> : {user1Details.LastLoginDate}</li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </template>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>       
+            
+            <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                <lightning-card>
+                    <div style="height: 150px">
+                        <h1 style="font-weight:bold; text-align:center; text-decoration: underline; margin-bottom: 10px; font-size:larger">{user2Name}</h1>
+                        <template if:false={showIntegratedUserDetails}>
+                            <template lwc:if={user2Details}>
+                                <ul style="padding-left:20px;">
+                                    <div style="display:flex;">
+                                        <div style="padding-left:20px;">
+                                            <li><b>Role</b> : {user2Details.UserRoleName}</li>
+                                            <li><b>Profile</b> : {user2Details.ProfileName}</li>
+                                            <li><b>Locale</b> : {user2Details.LocaleSidKey}</li>
+                                        </div>
+                                        <div style="padding-left:180px;">
+                                            <li><b>User License</b> : {user2Details.ProfileUserLicenseName}</li>
+                                            <li><b>Isactive</b> : {user2Details.isActive}</li>
+                                            <li><b>Last Login date</b> : {user2Details.LastLoginDate}</li>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </template>
+                        </template>
+                        <template if:true={showIntegratedUserDetails}>
+                            <template lwc:if={user2Details}>
+                                <ul style="padding-left:20px;">
+                                    <div style="display:flex;">
+                                        <div style="padding-left:20px;">
+                                            <li><b>Role</b> : {user2Details.UserRoleName}</li>
+                                            <li><b>Profile</b> : {user2Details.ProfileName}</li>
+                                            <li><b>Locale</b> : {user2Details.LocaleSidKey}</li>
+                                        </div>
+                                        <div style="padding-left:180px;">
+                                            <li><b>User License</b> : {user2Details.ProfileUserLicenseName}</li>
+                                            <li><b>Isactive</b> : {user2Details.isActive}</li>
+                                            <li><b>Last Login date</b> : {user2Details.LastLoginDate}</li>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </template>
+                        </template>
+                    </div>
+                </lightning-card> 
+            </lightning-layout-item>                   
+        </lightning-layout>        
+    </template> 
+</template>

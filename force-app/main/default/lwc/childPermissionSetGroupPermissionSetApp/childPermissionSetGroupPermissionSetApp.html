@@ -1,0 +1,89 @@
+<template>
+    <template if:true={showUserPermissionSetGroups}>
+        <!-- <h1 style="font-weight: bold; font-size:15px; text-align: center; text-decoration: underline; margin: 10px; color: #ffffff;"><b>ASSIGNED PERMISSION SET GROUPS AND PERMISSION SETS</b></h1>         -->
+        <div style="padding-left: 5px; padding-right: 5px;">
+            <lightning-card data-id="card1">
+                <div class="card-header">
+                    <lightning-icon style="padding-left:11px;" icon-name="utility:display_text" size="small" alternative-text="Text Icon"></lightning-icon>
+                    <div class="bold-title">ASSIGNED PERMISSION SET GROUPS AND PERMISSION SETS</div>
+                </div>
+            </lightning-card>
+        </div>
+            <lightning-layout style="padding-bottom: 30px;">
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                    <lightning-card> 
+                        <div style="height: 100px;
+                        overflow-y: auto;">                       
+                        <template if:true={user1PermissionSetGroupMap} >
+                            <!-- accordion component with muliple sectio open -->
+                            <lightning-accordion allow-multiple-sections-open >
+                                        <template for:each={user1PermissionSetGroupMap} for:item="psGroup">
+                                            <lightning-accordion-section key={psGroup.groupLabel} label={psGroup.groupLabel}>
+                                                <template for:each={psGroup.permissionSets} for:item="permissionSet">
+                                                    <ul key={permissionSet.permissionSetUrl} class="slds-var-p-left_medium" style="font-weight:bold; margin-left: 40px;">                                                
+                                                        <li style="font-weight:bold; font-size:16px; list-style-type: disc;"><lightning-button variant="base" name="button1" label={permissionSet.psLabel} data-url1={permissionSet.permissionSetUrl} onclick={navigateToPermissionSet1}></lightning-button></li>
+                                                    </ul>
+                                                </template>
+                                            </lightning-accordion-section>    
+                                        </template>
+                            </lightning-accordion>
+                        </template>                   
+                        <template if:true={user1PermissionSetsWithoutGroup}>
+                            <template for:each={user1PermissionSetsWithoutGroup} for:item="permissionSet">
+                                <ul key={permissionSet.permissionSetUrl} class="slds-var-p-left_medium" style="font-weight:bold; margin-left: 40px;">
+                                    <li style="font-weight:bold; font-size:16px; list-style-type: disc;"><lightning-button variant="base" name="button2" label={permissionSet.psLabel} data-url2={permissionSet.permissionSetUrl} onclick={navigateToPermissionSet1}></lightning-button></li>
+                                </ul>
+                            </template>
+                        </template>
+                        <template if:true={noData}>
+                            <p style="font-style: oblique;
+                            color: crimson;
+                            font-size: x-large;
+                            margin-left: 224px;
+                            margin-top: 28px;">
+                                No Data Available
+                            </p>
+                        </template>
+                        </div>
+                    </lightning-card>
+                </lightning-layout-item> 
+                <lightning-layout-item size="6" class="slds-var-p-around_xx-small">
+                    <lightning-card>
+                        <div style="height: 100px;
+                        overflow-y: auto;">
+                        <template if:true={user2PermissionSetGroupMap}>
+                            <!-- accordion component with muliple sectio open -->
+                            <lightning-accordion allow-multiple-sections-open>
+                                <template for:each={user2PermissionSetGroupMap} for:item="psGroup">
+                                    <lightning-accordion-section key={psGroup.groupLabel} label={psGroup.groupLabel}>
+                                        <template for:each={psGroup.permissionSets} for:item="permissionSet">
+                                            <ul key={permissionSet.permissionSetUrl} class="slds-var-p-left_medium" style="font-weight:bold; margin-left: 40px;">
+                                                <li style="font-weight:bold; font-size:16px; list-style-type: disc;"><lightning-button variant="base" label={permissionSet.psLabel} name="button3" data-url3={permissionSet.permissionSetUrl} onclick={navigateToPermissionSet2}></lightning-button></li>
+                                            </ul>
+                                        </template>
+                                    </lightning-accordion-section>
+                                </template>
+                            </lightning-accordion>
+                        </template>
+                        <template if:true={user2PermissionSetsWithoutGroup}>
+                            <template for:each={user2PermissionSetsWithoutGroup} for:item="permissionSet">
+                                <ul key={permissionSet.permissionSetUrl} class="slds-var-p-left_medium" style="font-weight:bold; margin-left: 40px;">
+                                    <li style="font-weight:bold; font-size:16px; list-style-type: disc;"><lightning-button variant="base" label={permissionSet.psLabel} name="button4" data-url4={permissionSet.permissionSetUrl} onclick={navigateToPermissionSet2}></lightning-button></li>
+                                </ul>
+                            </template>
+                        </template>
+                        <template if:true={noData2}>
+                            <p style="font-style: oblique;
+                                    color: crimson;
+                                    font-size: x-large;
+                                    margin-left: 224px;
+                                    margin-top: 28px;">
+                                        No Data Available
+                                    </p>
+                    </template>
+                    </div>
+                    </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>        
+    </template>
+</template>
